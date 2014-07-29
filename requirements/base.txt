@@ -1,0 +1,12 @@
+# python modules
+gunicorn # server
+psycopg2 # postgres bindings
+pillow # image manipulation
+requests # http library
+simplejson # json tools
+
+-e git+git://github.com/django/django.git@1.7c2#egg=Django # Django
+
+# django third party modules
+django-supervisor
+django-compressor # static file compression

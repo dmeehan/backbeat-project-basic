@@ -1,0 +1,134 @@
+{% load staticfiles %}
+{% load compress %}
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE }}">
+    <head>
+        <meta charset="utf-8" />
+        <title>
+        {% block head_title_base %}
+            Django Backbeat{% block head_title %}{% endblock %}
+        {% endblock %}
+        </title>
+
+        {% block viewport %}
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {% endblock %}
+
+        {% block style_base %}
+          {% compress css %}
+            <link href="{% static 'scss/app.scss' %}" media="screen, projection" rel="stylesheet" type="text/x-scss" />
+          {% endcompress %}
+          <link href='http://fonts.googleapis.com/css?family=Lusitana:400,700' rel='stylesheet' type='text/css'>
+          <link href='http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+          <link href='http://fonts.googleapis.com/css?family=Merriweather+Sans:400,300,300italic,400italic,700italic,700,800,800italic' rel='stylesheet' type='text/css'>
+          {% block extra_style %}{% endblock %}
+        {% endblock style_base %}
+
+        {% block script_head %}
+          {% block extra_script_head %}{% endblock %}
+        {% endblock script_head %}
+
+        {% block extra_head_base %}
+            {% block extra_head %}{% endblock extra_head %}
+        {% endblock extra_head_base %}
+    </head>
+    <body class="{% block body_class %}default{% endblock %}">
+      {% block header_base %}
+      <header class="navigation">
+          {% block header %}
+          <div class="navigation-wrapper">
+            <a href="javascript:void(0)" class="logo">Backbeat</a>
+            <a href="" class="navigation-menu-button" id="js-mobile-menu">MENU</a>
+            <div class="nav">
+              <ul id="navigation-menu">
+                <li class="nav-link"><a href="#">Products</a></li>
+                <li class="nav-link"><a href="#">About Us</a></li>
+                <li class="nav-link"><a href="#">Contact</a></li>
+                <li class="nav-link more"><a href="javascript:void(0)">More</a>
+                  <ul class="submenu">
+                    <li><a href="javascript:void(0)">Submenu Item</a></li>
+                    <li><a href="javascript:void(0)">Another Item</a></li>
+                    <li class="more"><a href="javascript:void(0)">Item with submenu</a>
+                      <ul class="submenu">
+                        <li><a href="javascript:void(0)">Sub-submenu Item</a></li>
+                        <li><a href="javascript:void(0)">Another Item</a></li>
+                      </ul>
+                    </li>
+                    <li class="more"><a href="javascript:void(0)">Another submenu</a>
+                      <ul class="submenu">
+                        <li><a href="javascript:void(0)">Sub-submenu</a></li>
+                        <li><a href="javascript:void(0)">An Item</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+            <div class="navigation-tools">
+              <div class="search-bar">
+                <div class="search-and-submit">
+                  <input type="search" placeholder="Enter Search" />
+                  <button type="submit">
+                    <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/search-icon.png" alt="">
+                  </button>
+                </div>
+              </div>
+              <a href="javascript:void(0)" class="sign-up">Sign Up</a>
+            </div>
+          </div>
+          {% endblock header %}
+        </header>
+      {% endblock header_base %}
+      {% block content_base %}
+      <div class="content">
+          {% block messages %}
+            {% include "_messages.html" %}
+          {% endblock messages %}
+          {% block content %}
+          {% endblock content %}
+       </div>
+       {% endblock content_base %}
+
+       {% block footer_base %}
+       <footer class="footer">
+          <div class="footer-logo">
+            <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_1.png" alt="">
+          </div>
+          <div class="footer-links">
+            <ul>
+              <li><h3>Content</h3></li>
+              <li><a href="javascript:void(0)">About</a></li>
+              <li><a href="javascript:void(0)">Contact</a></li>
+              <li><a href="javascript:void(0)">Products</a></li>
+            </ul>
+            <ul>
+              <li><h3>Follow Us</h3></li>
+              <li><a href="javascript:void(0)">Facebook</a></li>
+              <li><a href="javascript:void(0)">Twitter</a></li>
+              <li><a href="javascript:void(0)">YouTube</a></li>
+            </ul>
+            <ul>
+              <li><h3>Legal</h3></li>
+              <li><a href="javascript:void(0)">Terms and Conditions</a></li>
+              <li><a href="javascript:void(0)">Privacy Policy</a></li>
+            </ul>
+          </div>
+
+          <hr>
+
+          <p>Disclaimer area lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum, nostrum repudiandae saepe.</p>
+        </footer>
+
+      {% endblock footer_base %}
+
+      {% block script_base %}
+        {% block extra_script %}{% endblock extra_script %}
+      {% endblock script_base %}
+        
+      {% block analytics %}
+      {% endblock analytics %}
+
+      {% block extra_body %}
+      {% endblock extra_body %}
+    </body>
+</html>
